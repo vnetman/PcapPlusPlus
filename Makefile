@@ -104,10 +104,6 @@ libs:
 	@ls -la ./Dist
 	@echo CP PATH:
 	@echo $(CP)
-	@echo CP HELP:
-	@$(CP) --help
-	@echo COPY Common++.lib SPECIFICALLY 1:
-	@$(CP) $(COMMONPP_HOME)/Lib/Release/Common++.lib $(COMMONPP_HOME)/Lib
 	@echo CONTENT OF COMMONPP/LIB:
 	@ls -la $(COMMONPP_HOME)/Lib
 	@echo COPY Common++.lib SPECIFICALLY TO dot Dist:

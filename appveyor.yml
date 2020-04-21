@@ -6,7 +6,8 @@ environment:
   NPCAP_PASSWORD:
     secure: 8sWBrDudyutFv+4Eq6teJA==
   matrix:
-    - compiler: mingw-w64
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      compiler: mingw-w64
 
 
 install:
