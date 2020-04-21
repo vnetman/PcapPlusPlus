@@ -96,6 +96,12 @@ libs:
 	@echo DONE CREATING DIST
 	@$(MKDIR) -p Dist/header
 	@echo DONE CREATING DIST/HEADER
+	@echo CONTENT OF COMMONPP/LIBS:
+	@ls -la $(COMMONPP_HOME)/Lib/
+	@echo CONTENT OF COMMONPP/LIBS/RELEASE:
+	@ls -la $(COMMONPP_HOME)/Lib/Release
+	@echo CONTENT OF DIST:
+	@ls -la ./Dist
 	@$(CP) $(COMMONPP_HOME)/Lib/Release/* ./Dist
 	@echo DONE COPY COMMON LIBS
 	@$(CP) $(PACKETPP_HOME)/Lib/* ./Dist
