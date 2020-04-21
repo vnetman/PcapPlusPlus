@@ -102,8 +102,12 @@ libs:
 	@ls -la $(COMMONPP_HOME)/Lib/Release
 	@echo CONTENT OF DIST:
 	@ls -la ./Dist
-	# @$(CP) $(COMMONPP_HOME)/Lib/Release/* ./Dist
-	@echo SKIP COPY COMMON LIBS
+	@echo WHERE CP:
+	@where $(CP)
+	@echo CP HELP:
+	@$(CP) --help
+	@$(CP) $(COMMONPP_HOME)/Lib/Release/* ./Dist
+	@echo DONW COPY COMMON LIBS
 	@$(CP) $(PACKETPP_HOME)/Lib/* ./Dist
 	@echo DONE COPY PACKETPP LIBS
 	@$(CP) $(PCAPPP_HOME)/Lib/* ./Dist
