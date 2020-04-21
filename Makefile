@@ -106,7 +106,14 @@ libs:
 	@echo $(CP)
 	@echo CP HELP:
 	@$(CP) --help
-	@$(CP) $(COMMONPP_HOME)/Lib/Release/* ./Dist
+	@echo COPY Common++.lib SPECIFICALLY 1:
+	@$(CP) $(COMMONPP_HOME)/Lib/Release/Common++.lib $(COMMONPP_HOME)/Lib
+	@echo CONTENT OF COMMONPP/LIB:
+	@ls -la $(COMMONPP_HOME)/Lib
+	@echo COPY Common++.lib SPECIFICALLY TO dot Dist:
+	@$(CP) $(COMMONPP_HOME)/Lib/Release/Common++.lib ./Dist
+	@echo CONTENT OF Dist:
+	@ls -la ./Dist
 	@echo DONE COPY COMMON LIBS
 	@$(CP) $(PACKETPP_HOME)/Lib/* ./Dist
 	@echo DONE COPY PACKETPP LIBS
