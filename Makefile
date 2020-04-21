@@ -106,8 +106,8 @@ libs:
 	@echo $(CP)
 	@echo CONTENT OF COMMONPP/LIB:
 	@ls -la $(COMMONPP_HOME)/Lib
-	@echo COPY Common++.lib SPECIFICALLY TO dot Dist:
-	@$(CP) $(COMMONPP_HOME)/Lib/Release/Common++.lib ./Dist
+	@echo COPY COMMONPP_HOME LIBS:
+	@$(CP) $(COMMONPP_HOME)/Lib/Release/* ./Dist
 	@echo CONTENT OF Dist:
 	@ls -la ./Dist
 	@echo DONE COPY COMMON LIBS
