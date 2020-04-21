@@ -16,6 +16,6 @@ AR := ar.exe
 
 RM := rm.exe
 
-CP := cp.exe
+CP := $(MSYS_HOME)/usr/bin/cp.exe
 
 MKDIR := mkdir.exe
