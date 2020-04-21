@@ -6,9 +6,9 @@ environment:
   NPCAP_PASSWORD:
     secure: 8sWBrDudyutFv+4Eq6teJA==
   matrix:
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      compiler: mingw-w64
-
+    - compiler: mingw-w64
+    - compiler: mingw32
+      pcap_lib: npcap
 
 install:
 - if "%pcap_lib%"=="npcap" (ci\install_npcap.bat) else (ci\install_winpcap.bat)
