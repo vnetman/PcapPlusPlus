@@ -91,14 +91,23 @@ libs:
 	@cd $(COMMONPP_HOME)             && $(MAKE) all
 	@cd $(PACKETPP_HOME)             && $(MAKE) all
 	@cd $(PCAPPP_HOME)               && $(MAKE) all
+	@echo DONE BUILDING LIBS
 	@$(MKDIR) -p Dist
+	@echo DONE CREATING DIST
 	@$(MKDIR) -p Dist/header
+	@echo DONE CREATING DIST/HEADER
 	@$(CP) $(COMMONPP_HOME)/Lib/Release/* ./Dist
+	@echo DONE COPY COMMON LIBS
 	@$(CP) $(PACKETPP_HOME)/Lib/* ./Dist
+	@echo DONE COPY PACKETPP LIBS
 	@$(CP) $(PCAPPP_HOME)/Lib/* ./Dist
+	@echo DONE COPY PCAPPP LIBS
 	@$(CP) $(COMMONPP_HOME)/header/* ./Dist/header
+	@echo DONE COPY COMMON HEADERS
 	@$(CP) $(PACKETPP_HOME)/header/* ./Dist/header
+	@echo DONE COPY PACKETPP HEADERS
 	@$(CP) $(PCAPPP_HOME)/header/* ./Dist/header
+	@echo DONE COPY PCAPPP LIBS
 	@echo 'Finished successfully building PcapPlusPlus libs'
 	@echo ' '
 
