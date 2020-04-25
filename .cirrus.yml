@@ -8,9 +8,9 @@ task:
   get_code_script:
     - git clone https://github.com/PcapPlusPlus/pcapplusplus.github.io.git
     - if [[ $CIRRUS_BRANCH = pull/* ]]; then
-        git clone -b $CIRRUS_BASE_BRANCH $CIRRUS_REPO_CLONE_URL
+        git clone -b $CIRRUS_BASE_BRANCH $CIRRUS_REPO_CLONE_URL;
       else
-        git clone -b $CIRRUS_BRANCH $CIRRUS_REPO_CLONE_URL
+        git clone -b $CIRRUS_BRANCH $CIRRUS_REPO_CLONE_URL;
       fi
   configure_script:
     - cd PcapPlusPlus
