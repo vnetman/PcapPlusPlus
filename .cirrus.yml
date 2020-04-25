@@ -1,49 +1,4 @@
 task:
-  name: Test FreeBSD
-  freebsd_instance:
-    matrix:
-      image_family: freebsd-11-3-snap
-      image_family: freebsd-12-1-snap
-  update_script: pkg update -f
-  install_script: pkg install -y libpcap bash gsed gmake
-  configure_script:
-    - ./configure-freebsd.sh --default
-  build_script:
-    - gmake all
-  test_script:
-    - cd Tests/Packet++Test && Bin/Packet++Test
-    - cd ../Packet++Test-new && Bin/Packet++Test
-    - cd ../Pcap++Test && sudo Bin/Pcap++Test -n
-
-task:
-  name: Test Zstd Linux
-  container:
-    image: seladb/ubuntu1804-zstd:latest
-  configure_script:
-    - ./configure-linux.sh --use-zstd
-    - ldconfig
-  build_script:
-    - make all
-  test_script:
-    - cd Tests/Packet++Test && Bin/Packet++Test
-    - cd ../Packet++Test-new && Bin/Packet++Test  
-    - cd ../Pcap++Test && Bin/Pcap++Test -n
-
-task:
-  name: Test Zstd MacOS
-  osx_instance:
-    image: catalina-xcode
-  configure_script:
-    - brew install zstd
-    - ./configure-mac_os_x.sh --use-zstd
-  build_script:
-    - make all
-  test_script:
-    - cd Tests/Packet++Test && Bin/Packet++Test
-    - cd ../Tests/Packet++Test-new && Bin/Packet++Test
-    - cd ../Pcap++Test && Bin/Pcap++Test -n
-
-task:
   name: Build Doxygen Documentation
   container:
     image: seladb/ubuntu1804:latest
@@ -51,7 +6,15 @@ task:
     - GITHUB_EMAIL: ENCRYPTED[ae4956ec74c9f329f7787cdfe3a6b5842870659275d0a9b513a0f6e64cd9c71cd2eb64219a9dc695f446fbd93c48fb04]
     - GITHUB_TOKEN: ENCRYPTED[ab88249da2005c70f25f5910b08e907139f73bc0efb31a19b33f832e9e3bffe3cfc8e81932f21d7734c7aceca2a77188]
   get_code_script: 
-    - git clone -b $CIRRUS_BRANCH $CIRRUS_REPO_CLONE_URL
+    - BRANCH_TO_PULL=""
+    - if [[ $CIRRUS_BRANCH = pull/* ]]; then
+        BRANCH_TO_PULL=$CIRRUS_BASE_BRANCH
+      else
+        BRANCH_TO_PULL=$CIRRUS_BRANCH
+      fi
+    - echo $BRANCH_TO_PULL
+    - echo git clone -b $BRANCH_TO_PULL $CIRRUS_REPO_CLONE_URL
+    - git clone -b $BRANCH_TO_PULL $CIRRUS_REPO_CLONE_URL
     - git clone https://github.com/PcapPlusPlus/pcapplusplus.github.io.git
   configure_script:
     - cd PcapPlusPlus
