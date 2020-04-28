@@ -52,6 +52,7 @@ namespace pcpp
 		PacketLogModuleRadiusLayer, ///< RadiusLayer module (Packet++)
 		PacketLogModuleGtpLayer, ///< GtpLayer module (Packet++)
 		PacketLogModuleBgpLayer, ///< GtpLayer module (Packet++)
+		PacketLogModuleModbusTcpLayer, ///< ModbusTcpLayer module (Packet++)
 		PacketLogModuleTcpReassembly, ///< TcpReassembly module (Packet++)
 		PacketLogModuleIPReassembly, ///< IPReassembly module (Packet++)
 		PcapLogModuleWinPcapLiveDevice, ///< WinPcapLiveDevice module (Pcap++)

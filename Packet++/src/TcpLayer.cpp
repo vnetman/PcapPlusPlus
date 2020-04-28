@@ -6,6 +6,7 @@
 #include "IPv6Layer.h"
 #include "PayloadLayer.h"
 #include "HttpLayer.h"
+#include "ModbusTcpLayer.h"
 #include "SSLLayer.h"
 #include "SipLayer.h"
 #include "BgpLayer.h"
@@ -358,6 +359,10 @@ void TcpLayer::parseNextLayer()
 	}
 	else if (BgpLayer::isBgpPort(portSrc, portDst))
 		m_NextLayer = BgpLayer::parseBgpLayer(payload, payloadLen, this, m_Packet);
+	else if (ModbusTcpLayer::isModbusPort(portSrc))
+		m_NextLayer = new ModbusTcpLayer(MODBUS_FNDIR_RESPONSE, payload, payloadLen, this, m_Packet);
+	else if (ModbusTcpLayer::isModbusPort(portDst))
+		m_NextLayer = new ModbusTcpLayer(MODBUS_FNDIR_REQUEST, payload, payloadLen, this, m_Packet);
 	else
 		m_NextLayer = new PayloadLayer(payload, payloadLen, this, m_Packet);
 }
